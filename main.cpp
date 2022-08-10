@@ -91,6 +91,11 @@ void Logic() {
     }    
     if (x > width || x < 0 || y > height || y < 0)
         gameOver = true;
+    if (x == fruitX && y == fruitY) {
+        score =+10;
+        fruitX = rand() % width;
+        fruitY = rand() % height;
+    }
 }
 
 int main() {
@@ -100,7 +105,7 @@ int main() {
         Draw();
         Input();
         Logic();
-        sleep(0.5);
+        sleep(0.9);
     }
 
     return 0;
