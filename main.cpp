@@ -73,7 +73,22 @@ void Input() {
 
 void Logic() {
 
-    
+    switch (dir) {
+        case LEFT:
+            x--;
+            break;
+        case RIGHT:
+            x++;
+            break;
+        case UP:
+            y--;
+            break;
+        case DOWN:
+            y++;
+            break;
+        default:
+            break;
+    }    
 }
 
 int main() {
@@ -81,9 +96,9 @@ int main() {
     while (!gameOver)
     {
         Draw();
-        // Input();
-        // Logic();
-        sleep(1);
+        Input();
+        Logic();
+        sleep(0.5);
     }
 
     return 0;
