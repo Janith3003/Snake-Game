@@ -4,8 +4,8 @@
 using namespace std;
 
 bool gameOver;
-const int width = 20;
-const int height = 20;
+const int width = 30;
+const int height = 30;
 int x, y, fruitX, fruitY, score;
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
@@ -90,7 +90,7 @@ void Logic() {
         default:
             break;
     }    
-    if (x > width || x < 0 || y > height || y < 0)
+    if (x > width-1 || x < 0 || y > height-1 || y < 0)
         gameOver = true;
     if (x == fruitX && y == fruitY) {
         score =+10;
