@@ -4,7 +4,7 @@
 using namespace std;
 
 bool gameOver;
-const int width = 40;
+const int width = 20;
 const int height = 20;
 int x, y, fruitX, fruitY, score;
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
@@ -47,6 +47,7 @@ void Draw () {
     for (int i = 0; i < width+1; i++)
         cout << "#";
     cout << endl;
+    cout << endl << "Score: " << score << endl;
 }
 
 void Input() {
@@ -105,6 +106,7 @@ int main() {
         Draw();
         Input();
         Logic();
+        sleep(0.9);
         sleep(0.9);
     }
 
