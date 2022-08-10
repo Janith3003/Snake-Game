@@ -1,10 +1,11 @@
 #include <iostream>
+#include <conio.h>
 #include <unistd.h>
 using namespace std;
 
 bool gameOver;
-const int width = 20;
-const int height =20;
+const int width = 40;
+const int height = 20;
 int x, y, fruitX, fruitY, score;
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
@@ -22,7 +23,7 @@ void Setup() {
 void Draw () {
     system("cls");
 
-    for (int i = 0; i < width+2; i++)
+    for (int i = 0; i < width+1; i++)
         cout << "#";
     cout << endl;
 
@@ -30,6 +31,10 @@ void Draw () {
         for (int j = 0; j < width; j++) {
             if (j == 0)
                 cout << "#";
+            if(i == y && j == x)
+                cout << "O";
+            else if ( i == fruitY && j == fruitX)
+                cout << "$";
             else
                 cout << " ";
 
@@ -39,7 +44,7 @@ void Draw () {
         cout << endl;
     }
 
-    for (int i = 0; i < width+2; i++)
+    for (int i = 0; i < width+1; i++)
         cout << "#";
     cout << endl;
 }
@@ -50,6 +55,7 @@ void Input() {
 
 void Logic() {
 
+
 }
 
 int main() {
@@ -59,6 +65,7 @@ int main() {
         Draw();
         // Input();
         // Logic();
+        sleep(1);
     }
 
     return 0;
