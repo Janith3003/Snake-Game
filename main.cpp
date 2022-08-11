@@ -1,10 +1,9 @@
 #include <iostream>
 #include <conio.h>
-#include <unistd.h>
 using namespace std;
 
 bool gameOver;
-const int width = 30;
+const int width = 40;
 const int height = 30;
 int x, y, fruitX, fruitY, score;
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
@@ -106,8 +105,6 @@ int main() {
         Draw();
         Input();
         Logic();
-        sleep(0.9);
-        sleep(0.9);
     }
 
     return 0;
