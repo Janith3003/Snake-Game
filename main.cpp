@@ -10,7 +10,7 @@ int x, y, fruitX, fruitY, score;
 int tailX[100], tailY[100];
 int nTail;
 enum eDirection { STOP = 0, LEFT, RIGHT, UP, DOWN};
-eDirection dir;
+eDirection prevdir, dir;
 
 
 void Setup() {
@@ -65,6 +65,7 @@ void Draw () {
 
 void Input() {
     if (_kbhit()) {     // key pressed return true
+    prevdir = dir;
         switch(_getch()) {
             case 'a':
                 dir = LEFT;
@@ -122,8 +123,18 @@ void Logic() {
     // if (x >= width) x = 0; else if (x < 0) x = width -1;
     // if (y >= height) y = 0; else if (y < 0) y = height-1;
     for (int i = 0; i < nTail; i++) {
-        if (tailX[i] == x && tailY[i] == y)
-            gameOver = true;
+        if (tailX[i] == x && tailY[i] == y) {
+            if (dir == LEFT && prevdir == RIGHT)
+                gameOver = false;
+            else if (dir == RIGHT && prevdir == LEFT)
+                gameOver = false;
+            else if (dir == UP && prevdir == DOWN)
+                gameOver = false;
+            else if (dir == DOWN && prevdir == UP)
+                gameOver = false;
+            else
+                gameOver = true;
+        }
     }
     if (x == fruitX && y == fruitY) {
         score += 10;
